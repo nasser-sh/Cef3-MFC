@@ -22,17 +22,17 @@
 IMPLEMENT_DYNCREATE(CCef3View, CView)
 
 BEGIN_MESSAGE_MAP(CCef3View, CView)
-	// Standard printing commands
-	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+    // Standard printing commands
+    ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
+    ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
+    ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
 END_MESSAGE_MAP()
 
 // CCef3View construction/destruction
 
 CCef3View::CCef3View()
 {
-	// TODO: add construction code here
+    // TODO: add construction code here
 
 }
 
@@ -42,22 +42,22 @@ CCef3View::~CCef3View()
 
 BOOL CCef3View::PreCreateWindow(CREATESTRUCT& cs)
 {
-	// TODO: Modify the Window class or styles here by modifying
-	//  the CREATESTRUCT cs
+    // TODO: Modify the Window class or styles here by modifying
+    //  the CREATESTRUCT cs
 
-	return CView::PreCreateWindow(cs);
+    return CView::PreCreateWindow(cs);
 }
 
 // CCef3View drawing
 
 void CCef3View::OnDraw(CDC* /*pDC*/)
 {
-	CCef3Doc* pDoc = GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;
+    CCef3Doc* pDoc = GetDocument();
+    ASSERT_VALID(pDoc);
+    if (!pDoc)
+        return;
 
-	// TODO: add draw code for native data here
+    // TODO: add draw code for native data here
 }
 
 
@@ -65,18 +65,18 @@ void CCef3View::OnDraw(CDC* /*pDC*/)
 
 BOOL CCef3View::OnPreparePrinting(CPrintInfo* pInfo)
 {
-	// default preparation
-	return DoPreparePrinting(pInfo);
+    // default preparation
+    return DoPreparePrinting(pInfo);
 }
 
 void CCef3View::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 {
-	// TODO: add extra initialization before printing
+    // TODO: add extra initialization before printing
 }
 
 void CCef3View::OnEndPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 {
-	// TODO: add cleanup after printing
+    // TODO: add cleanup after printing
 }
 
 
@@ -85,18 +85,18 @@ void CCef3View::OnEndPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 #ifdef _DEBUG
 void CCef3View::AssertValid() const
 {
-	CView::AssertValid();
+    CView::AssertValid();
 }
 
 void CCef3View::Dump(CDumpContext& dc) const
 {
-	CView::Dump(dc);
+    CView::Dump(dc);
 }
 
 CCef3Doc* CCef3View::GetDocument() const // non-debug version is inline
 {
-	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CCef3Doc)));
-	return (CCef3Doc*)m_pDocument;
+    ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CCef3Doc)));
+    return (CCef3Doc*)m_pDocument;
 }
 #endif //_DEBUG
 

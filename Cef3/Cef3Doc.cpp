@@ -29,7 +29,7 @@ END_MESSAGE_MAP()
 
 CCef3Doc::CCef3Doc()
 {
-	// TODO: add one-time construction code here
+    // TODO: add one-time construction code here
 
 }
 
@@ -39,13 +39,13 @@ CCef3Doc::~CCef3Doc()
 
 BOOL CCef3Doc::OnNewDocument()
 {
-	if (!CDocument::OnNewDocument())
-		return FALSE;
+    if (!CDocument::OnNewDocument())
+        return FALSE;
 
-	// TODO: add reinitialization code here
-	// (SDI documents will reuse this document)
+    // TODO: add reinitialization code here
+    // (SDI documents will reuse this document)
 
-	return TRUE;
+    return TRUE;
 }
 
 
@@ -55,14 +55,14 @@ BOOL CCef3Doc::OnNewDocument()
 
 void CCef3Doc::Serialize(CArchive& ar)
 {
-	if (ar.IsStoring())
-	{
-		// TODO: add storing code here
-	}
-	else
-	{
-		// TODO: add loading code here
-	}
+    if (ar.IsStoring())
+    {
+        // TODO: add storing code here
+    }
+    else
+    {
+        // TODO: add loading code here
+    }
 }
 
 #ifdef SHARED_HANDLERS
@@ -70,51 +70,51 @@ void CCef3Doc::Serialize(CArchive& ar)
 // Support for thumbnails
 void CCef3Doc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
-	// Modify this code to draw the document's data
-	dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
+    // Modify this code to draw the document's data
+    dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
 
-	CString strText = _T("TODO: implement thumbnail drawing here");
-	LOGFONT lf;
+    CString strText = _T("TODO: implement thumbnail drawing here");
+    LOGFONT lf;
 
-	CFont* pDefaultGUIFont = CFont::FromHandle((HFONT) GetStockObject(DEFAULT_GUI_FONT));
-	pDefaultGUIFont->GetLogFont(&lf);
-	lf.lfHeight = 36;
+    CFont* pDefaultGUIFont = CFont::FromHandle((HFONT) GetStockObject(DEFAULT_GUI_FONT));
+    pDefaultGUIFont->GetLogFont(&lf);
+    lf.lfHeight = 36;
 
-	CFont fontDraw;
-	fontDraw.CreateFontIndirect(&lf);
+    CFont fontDraw;
+    fontDraw.CreateFontIndirect(&lf);
 
-	CFont* pOldFont = dc.SelectObject(&fontDraw);
-	dc.DrawText(strText, lprcBounds, DT_CENTER | DT_WORDBREAK);
-	dc.SelectObject(pOldFont);
+    CFont* pOldFont = dc.SelectObject(&fontDraw);
+    dc.DrawText(strText, lprcBounds, DT_CENTER | DT_WORDBREAK);
+    dc.SelectObject(pOldFont);
 }
 
 // Support for Search Handlers
 void CCef3Doc::InitializeSearchContent()
 {
-	CString strSearchContent;
-	// Set search contents from document's data. 
-	// The content parts should be separated by ";"
+    CString strSearchContent;
+    // Set search contents from document's data. 
+    // The content parts should be separated by ";"
 
-	// For example:  strSearchContent = _T("point;rectangle;circle;ole object;");
-	SetSearchContent(strSearchContent);
+    // For example:  strSearchContent = _T("point;rectangle;circle;ole object;");
+    SetSearchContent(strSearchContent);
 }
 
 void CCef3Doc::SetSearchContent(const CString& value)
 {
-	if (value.IsEmpty())
-	{
-		RemoveChunk(PKEY_Search_Contents.fmtid, PKEY_Search_Contents.pid);
-	}
-	else
-	{
-		CMFCFilterChunkValueImpl *pChunk = NULL;
-		ATLTRY(pChunk = new CMFCFilterChunkValueImpl);
-		if (pChunk != NULL)
-		{
-			pChunk->SetTextValue(PKEY_Search_Contents, value, CHUNK_TEXT);
-			SetChunkValue(pChunk);
-		}
-	}
+    if (value.IsEmpty())
+    {
+        RemoveChunk(PKEY_Search_Contents.fmtid, PKEY_Search_Contents.pid);
+    }
+    else
+    {
+        CMFCFilterChunkValueImpl *pChunk = NULL;
+        ATLTRY(pChunk = new CMFCFilterChunkValueImpl);
+        if (pChunk != NULL)
+        {
+            pChunk->SetTextValue(PKEY_Search_Contents, value, CHUNK_TEXT);
+            SetChunkValue(pChunk);
+        }
+    }
 }
 
 #endif // SHARED_HANDLERS
@@ -124,12 +124,12 @@ void CCef3Doc::SetSearchContent(const CString& value)
 #ifdef _DEBUG
 void CCef3Doc::AssertValid() const
 {
-	CDocument::AssertValid();
+    CDocument::AssertValid();
 }
 
 void CCef3Doc::Dump(CDumpContext& dc) const
 {
-	CDocument::Dump(dc);
+    CDocument::Dump(dc);
 }
 #endif //_DEBUG
 
