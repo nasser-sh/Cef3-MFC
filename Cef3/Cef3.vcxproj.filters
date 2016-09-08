@@ -19,9 +19,16 @@
     <Filter Include="Source Files\MFC">
       <UniqueIdentifier>{c09659e4-80fd-47c3-a28b-30669f92cfbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\CEF3">
+      <UniqueIdentifier>{9209edfd-c24a-4fa8-a6bd-df60598e2717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CEF3">
+      <UniqueIdentifier>{52cfbdcc-dcc7-49ab-bea3-a4e15845b42d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
+    <Text Include="..\README.md" />
+    <Text Include="..\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -48,6 +55,18 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files\MFC</Filter>
     </ClInclude>
+    <ClInclude Include="CefBrowserApp.h">
+      <Filter>Header Files\CEF3</Filter>
+    </ClInclude>
+    <ClInclude Include="CefOtherApp.h">
+      <Filter>Header Files\CEF3</Filter>
+    </ClInclude>
+    <ClInclude Include="CefRendererApp.h">
+      <Filter>Header Files\CEF3</Filter>
+    </ClInclude>
+    <ClInclude Include="CefContext.h">
+      <Filter>Header Files\CEF3</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -67,6 +86,15 @@
     </ClCompile>
     <ClCompile Include="MainFrm.cpp">
       <Filter>Source Files\MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="CefBrowserApp.cpp">
+      <Filter>Source Files\CEF3</Filter>
+    </ClCompile>
+    <ClCompile Include="CefRendererApp.cpp">
+      <Filter>Source Files\CEF3</Filter>
+    </ClCompile>
+    <ClCompile Include="CefContext.cpp">
+      <Filter>Source Files\CEF3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

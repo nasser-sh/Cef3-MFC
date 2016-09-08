@@ -57,8 +57,16 @@ CCef3App theApp;
 
 // CCef3App initialization
 
+BOOL CCef3App::PumpMessage()
+{
+	m_cefContext.DoMessageLoopWork();
+	return CWinApp::PumpMessage();
+}
+
 BOOL CCef3App::InitInstance()
 {
+	m_cefContext.Initialize();
+
     // InitCommonControlsEx() is required on Windows XP if an application
     // manifest specifies use of ComCtl32.dll version 6 or later to enable
     // visual styles.  Otherwise, any window creation will fail.
@@ -82,7 +90,7 @@ BOOL CCef3App::InitInstance()
     AfxEnableControlContainer();
 
     EnableTaskbarInteraction(FALSE);
-
+	
     // AfxInitRichEdit2() is required to use RichEdit control	
     // AfxInitRichEdit2();
 
@@ -144,6 +152,8 @@ BOOL CCef3App::InitInstance()
 
 int CCef3App::ExitInstance()
 {
+	m_cefContext.Shutdown();
+
     //TODO: handle additional resources you may have added
     AfxOleTerm(FALSE);
 

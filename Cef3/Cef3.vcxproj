@@ -57,9 +57,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\CEF3\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>C:\CEF3\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcef.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -81,11 +84,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\CEF3\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\CEF3\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcef.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -99,12 +105,13 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Cef3.h" />
     <ClInclude Include="Cef3Doc.h" />
     <ClInclude Include="Cef3View.h" />
+    <ClInclude Include="CefBrowserApp.h" />
+    <ClInclude Include="CefContext.h" />
+    <ClInclude Include="CefOtherApp.h" />
+    <ClInclude Include="CefRendererApp.h" />
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Resource.h" />
@@ -115,6 +122,9 @@
     <ClCompile Include="Cef3.cpp" />
     <ClCompile Include="Cef3Doc.cpp" />
     <ClCompile Include="Cef3View.cpp" />
+    <ClCompile Include="CefBrowserApp.cpp" />
+    <ClCompile Include="CefContext.cpp" />
+    <ClCompile Include="CefRendererApp.cpp" />
     <ClCompile Include="ChildFrm.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -133,6 +143,15 @@
     <Image Include="res\Cef3.ico" />
     <Image Include="res\Cef3Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\LICENSE.txt" />
+    <Text Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\CEF3\libcef_dll\libcef_dll_wrapper.vcxproj">
+      <Project>{a146be8d-66fc-3cfd-8fce-db94758236cf}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
