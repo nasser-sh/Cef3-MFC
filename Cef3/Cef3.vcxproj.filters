@@ -13,54 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\MFC">
+      <UniqueIdentifier>{720f1abe-d2c3-46e4-9e50-d263d0aad103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MFC">
+      <UniqueIdentifier>{c09659e4-80fd-47c3-a28b-30669f92cfbd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cef3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
-    <ClInclude Include="MainFrm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ChildFrm.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Cef3.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
     <ClInclude Include="Cef3Doc.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
     <ClInclude Include="Cef3View.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>Header Files\MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cef3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
-    <ClCompile Include="MainFrm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ChildFrm.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Cef3.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
     <ClCompile Include="Cef3Doc.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
     <ClCompile Include="Cef3View.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>Source Files\MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
