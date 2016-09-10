@@ -22,6 +22,8 @@
 IMPLEMENT_DYNCREATE(CCef3View, CView)
 
 BEGIN_MESSAGE_MAP(CCef3View, CView)
+    ON_WM_CREATE()
+    ON_WM_SIZE()
     // Standard printing commands
     ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
     ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
@@ -58,6 +60,34 @@ void CCef3View::OnDraw(CDC* /*pDC*/)
         return;
 
     // TODO: add draw code for native data here
+}
+
+
+int CCef3View::OnCreate(LPCREATESTRUCT pCreateStruct)
+{
+    if (CView::OnCreate(pCreateStruct) == -1) {
+        return -1;
+    }
+
+    m_browserCtrl.Create(this);
+    return 0;
+}
+
+
+void CCef3View::OnSize(UINT nType, int cx, int cy)
+{
+    CWnd::OnSize(nType, cx, cy);
+
+    CRect clientRect;
+    GetClientRect(&clientRect);
+    
+    m_browserCtrl.SetWindowPos(
+        nullptr, 
+        clientRect.left, 
+        clientRect.top, 
+        clientRect.Width(), 
+        clientRect.Height(), 
+        SWP_NOZORDER);
 }
 
 

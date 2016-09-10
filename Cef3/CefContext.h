@@ -3,19 +3,22 @@
 #include "include/cef_app.h"
 
 
-class CefContext
+class CefContext final
 {
 public:
 	CefContext();
-	CefRefPtr<CefBrowser> CreateBrowser(
+    ~CefContext();
+	
+    CefRefPtr<CefBrowser> CreateBrowser(
 		CefWindowHandle parentWindow,
 		const std::string &url) const;
 	void DoMessageLoopWork();
+
+private:
 	bool Initialize();
-	bool IsInitialized() const;
 	void Shutdown();
 
 private:
-	bool m_initialized;
+	static bool isInstantiated;
 	CefRefPtr<CefApp> m_pApp;
 };

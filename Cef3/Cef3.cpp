@@ -11,6 +11,7 @@
 #include "ChildFrm.h"
 #include "Cef3Doc.h"
 #include "Cef3View.h"
+#include "BrowserCtrl.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -59,14 +60,12 @@ CCef3App theApp;
 
 BOOL CCef3App::PumpMessage()
 {
-	m_cefContext.DoMessageLoopWork();
+    CBrowserCtrl::DoMessageLoopWork();
 	return CWinApp::PumpMessage();
 }
 
 BOOL CCef3App::InitInstance()
 {
-	m_cefContext.Initialize();
-
     // InitCommonControlsEx() is required on Windows XP if an application
     // manifest specifies use of ComCtl32.dll version 6 or later to enable
     // visual styles.  Otherwise, any window creation will fail.
@@ -152,8 +151,6 @@ BOOL CCef3App::InitInstance()
 
 int CCef3App::ExitInstance()
 {
-	m_cefContext.Shutdown();
-
     //TODO: handle additional resources you may have added
     AfxOleTerm(FALSE);
 

@@ -105,20 +105,24 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BrowserCtrl.h" />
     <ClInclude Include="Cef3.h" />
     <ClInclude Include="Cef3Doc.h" />
     <ClInclude Include="Cef3View.h" />
     <ClInclude Include="CefBrowserApp.h" />
+    <ClInclude Include="CefClientWindowsMessages.h" />
     <ClInclude Include="CefContext.h" />
     <ClInclude Include="CefOtherApp.h" />
     <ClInclude Include="CefRendererApp.h" />
     <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="ClientHandler.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BrowserCtrl.cpp" />
     <ClCompile Include="Cef3.cpp" />
     <ClCompile Include="Cef3Doc.cpp" />
     <ClCompile Include="Cef3View.cpp" />
@@ -126,6 +130,7 @@
     <ClCompile Include="CefContext.cpp" />
     <ClCompile Include="CefRendererApp.cpp" />
     <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="ClientHandler.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

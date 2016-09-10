@@ -1,11 +1,11 @@
 #include "stdafx.h"
+#include "ClientHandler.h"
 #include "CefContext.h"
 #include "CefBrowserApp.h"
 #include "CefOtherApp.h"
 #include "CefRendererApp.h"
 #include "include/cef_app.h"
 #include "include/cef_base.h"
-#include "include/cef_client.h"
 #include "include/cef_command_line.h"
 
 
@@ -41,9 +41,23 @@ namespace
 }
 
 
+bool CefContext::isInstantiated = false;
+
+
 CefContext::CefContext()
-: m_initialized(false)
-{ }
+{ 
+    assert(!isInstantiated);
+    isInstantiated = true;
+
+    bool isChromiumInitialized = Initialize();
+    assert(isChromiumInitialized);
+}
+
+
+CefContext::~CefContext()
+{
+    Shutdown();
+}
 
 
 CefRefPtr<CefBrowser> CefContext::CreateBrowser(
@@ -58,13 +72,18 @@ CefRefPtr<CefBrowser> CefContext::CreateBrowser(
 
 	CefBrowserSettings browserSettings;
 
-	return CefBrowserHost::CreateBrowserSync(windowInfo, nullptr, url, browserSettings, nullptr);
+	return CefBrowserHost::CreateBrowserSync(
+        windowInfo, 
+        new CClientHandler, 
+        url, 
+        browserSettings, 
+        nullptr);
 }
 
 
 void CefContext::DoMessageLoopWork()
 {
-	if (m_initialized) {
+	if (isInstantiated) {
 		CefDoMessageLoopWork();
 	}
 }
@@ -81,23 +100,16 @@ bool CefContext::Initialize()
 
 	CefSettings settings;
 	settings.no_sandbox = true;
-	settings.single_process = true;
+	//settings.single_process = true;
 	
-	m_initialized = CefInitialize(mainArgs, settings, m_pApp, nullptr);
-
-	return m_initialized;
-}
-
-
-bool CefContext::IsInitialized() const
-{
-	return m_initialized;
+    return CefInitialize(mainArgs, settings, m_pApp, nullptr);
 }
 
 
 void CefContext::Shutdown()
 {
-	assert(m_initialized);
+    CefDoMessageLoopWork();
+    CefDoMessageLoopWork();
+    CefDoMessageLoopWork();
 	CefShutdown();
-	m_initialized = false;
 }

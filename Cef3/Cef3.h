@@ -27,9 +27,6 @@ public:
     virtual int ExitInstance() override;
 	virtual BOOL PumpMessage() override;
 
-private:
-	CefContext m_cefContext;
-
 protected:
 // Implementation
     afx_msg void OnAppAbout();

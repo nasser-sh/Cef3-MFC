@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+#include "BrowserCtrl.h"
 
 class CCef3View : public CView
 {
@@ -36,9 +36,11 @@ public:
 #endif
 
 protected:
-
+    CBrowserCtrl m_browserCtrl;
 // Generated message map functions
 protected:
+    afx_msg int OnCreate(LPCREATESTRUCT pCreateStruct);
+    afx_msg void OnSize(UINT nType, int cx, int cy);
     DECLARE_MESSAGE_MAP()
 };
 

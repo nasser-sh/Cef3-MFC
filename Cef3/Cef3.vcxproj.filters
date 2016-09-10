@@ -67,6 +67,15 @@
     <ClInclude Include="CefContext.h">
       <Filter>Header Files\CEF3</Filter>
     </ClInclude>
+    <ClInclude Include="BrowserCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CefClientWindowsMessages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -95,6 +104,12 @@
     </ClCompile>
     <ClCompile Include="CefContext.cpp">
       <Filter>Source Files\CEF3</Filter>
+    </ClCompile>
+    <ClCompile Include="BrowserCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientHandler.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
