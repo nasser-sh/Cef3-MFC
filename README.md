@@ -1,6 +1,6 @@
 # Cef3-MFC
 
-Cef3-MFC is a simple project that demonstrates how to integrate a Chromium browser into various MFC controls.
+Cef3-MFC is a simple project that demonstrates how to integrate a Chromium browser into various MFC controls using [Chromium Embedded Framework 3](https://bitbucket.org/chromiumembedded/cef).
 
 ## Required tools
 1. Visual Studio 2015. All editions work, including Community. 
