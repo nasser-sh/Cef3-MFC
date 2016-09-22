@@ -11,33 +11,33 @@
 
 namespace
 {
-	CefString const browserProcessString = "";
-	CefString const renderProcessString = "renderer";
+    CefString const browserProcessString = "";
+    CefString const renderProcessString = "renderer";
 
 
-	CefRefPtr<CefCommandLine> GetCefCommandLine()
-	{
-		CefRefPtr<CefCommandLine> commandLine = CefCommandLine::CreateCommandLine();
-		LPWSTR cmd = ::GetCommandLine();
-		commandLine->InitFromString(cmd);
-		return commandLine;
-	}
+    CefRefPtr<CefCommandLine> GetCefCommandLine()
+    {
+        CefRefPtr<CefCommandLine> commandLine = CefCommandLine::CreateCommandLine();
+        LPWSTR cmd = ::GetCommandLine();
+        commandLine->InitFromString(cmd);
+        return commandLine;
+    }
 
 
-	CefRefPtr<CefApp> GetApp(CefRefPtr<CefCommandLine> const &commandLine)
-	{
-		if (!commandLine->HasSwitch("type")) {
-			return new CCefBrowserApp;
-		}
+    CefRefPtr<CefApp> GetApp(CefRefPtr<CefCommandLine> const &commandLine)
+    {
+        if (!commandLine->HasSwitch("type")) {
+            return new CCefBrowserApp;
+        }
 
-		CefString processType = commandLine->GetSwitchValue("type");
+        CefString processType = commandLine->GetSwitchValue("type");
 
-		if (processType == renderProcessString) {
-			return new CCefRendererApp;
-		}
+        if (processType == renderProcessString) {
+            return new CCefRendererApp;
+        }
 
-		return new CCefOtherApp;
-	}
+        return new CCefOtherApp;
+    }
 }
 
 
@@ -61,18 +61,18 @@ CefContext::~CefContext()
 
 
 CefRefPtr<CefBrowser> CefContext::CreateBrowser(
-	CefWindowHandle parentWindow,
-	const std::string &url) const
+    CefWindowHandle parentWindow,
+    const std::string &url) const
 {
-	CefWindowInfo windowInfo;
-	
-	RECT clientRectangle;
-	GetClientRect(parentWindow, &clientRectangle);
-	windowInfo.SetAsChild(parentWindow, clientRectangle);
+    CefWindowInfo windowInfo;
+    
+    RECT clientRectangle;
+    GetClientRect(parentWindow, &clientRectangle);
+    windowInfo.SetAsChild(parentWindow, clientRectangle);
 
-	CefBrowserSettings browserSettings;
+    CefBrowserSettings browserSettings;
 
-	return CefBrowserHost::CreateBrowserSync(
+    return CefBrowserHost::CreateBrowserSync(
         windowInfo, 
         new CClientHandler, 
         url, 
@@ -83,25 +83,25 @@ CefRefPtr<CefBrowser> CefContext::CreateBrowser(
 
 void CefContext::DoMessageLoopWork()
 {
-	if (isInstantiated) {
-		CefDoMessageLoopWork();
-	}
+    if (isInstantiated) {
+        CefDoMessageLoopWork();
+    }
 }
 
 
 bool CefContext::Initialize()
 {
-	CefRefPtr<CefCommandLine> commandLine = GetCefCommandLine();
-	m_pApp = GetApp(commandLine);
+    CefRefPtr<CefCommandLine> commandLine = GetCefCommandLine();
+    m_pApp = GetApp(commandLine);
 
-	CefMainArgs mainArgs;
-	int exitCode = CefExecuteProcess(mainArgs, m_pApp, nullptr);
-	ASSERT(exitCode < 0);
+    CefMainArgs mainArgs;
+    int exitCode = CefExecuteProcess(mainArgs, m_pApp, nullptr);
+    ASSERT(exitCode < 0);
 
-	CefSettings settings;
-	settings.no_sandbox = true;
-	//settings.single_process = true;
-	
+    CefSettings settings;
+    settings.no_sandbox = true;
+    //settings.single_process = true;
+    
     return CefInitialize(mainArgs, settings, m_pApp, nullptr);
 }
 
@@ -111,5 +111,5 @@ void CefContext::Shutdown()
     CefDoMessageLoopWork();
     CefDoMessageLoopWork();
     CefDoMessageLoopWork();
-	CefShutdown();
+    CefShutdown();
 }

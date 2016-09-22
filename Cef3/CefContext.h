@@ -6,19 +6,19 @@
 class CefContext final
 {
 public:
-	CefContext();
+    CefContext();
     ~CefContext();
-	
+    
     CefRefPtr<CefBrowser> CreateBrowser(
-		CefWindowHandle parentWindow,
-		const std::string &url) const;
-	void DoMessageLoopWork();
+        CefWindowHandle parentWindow,
+        const std::string &url) const;
+    void DoMessageLoopWork();
 
 private:
-	bool Initialize();
-	void Shutdown();
+    bool Initialize();
+    void Shutdown();
 
 private:
-	static bool isInstantiated;
-	CefRefPtr<CefApp> m_pApp;
+    static bool isInstantiated;
+    CefRefPtr<CefApp> m_pApp;
 };
