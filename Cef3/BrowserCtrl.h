@@ -1,5 +1,6 @@
 #pragma once
 #include <afxwin.h>
+#include <string>
 #include "CefContext.h"
 
 class CBrowserCtrl : public CWnd
@@ -11,7 +12,7 @@ public:
 
     static void DoMessageLoopWork();
 
-    BOOL Create(CWnd *pParent);
+    BOOL Create(CWnd *pParent, std::string url);
 
 private:
     static CefContext cefContext;

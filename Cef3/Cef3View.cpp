@@ -69,7 +69,7 @@ int CCef3View::OnCreate(LPCREATESTRUCT pCreateStruct)
         return -1;
     }
 
-    m_browserCtrl.Create(this);
+    m_browserCtrl.Create(this, "https://www.google.com");
     return 0;
 }
 

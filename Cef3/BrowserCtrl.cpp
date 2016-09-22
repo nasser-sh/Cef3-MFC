@@ -33,6 +33,18 @@ namespace
 
         return TRUE;
     }
+
+    template <typename T>
+    T GetFromLPVoid(LPVOID parameter)
+    {
+        T *pResult = reinterpret_cast<T*>(parameter);
+        assert(pResult != nullptr);
+        
+        T result = std::move(*pResult);
+        delete pResult;
+
+        return result;
+    }
 }
 
 
@@ -66,17 +78,20 @@ CBrowserCtrl::~CBrowserCtrl()
 { }
 
 
-BOOL CBrowserCtrl::Create(CWnd *pParent)
+BOOL CBrowserCtrl::Create(CWnd *pParent, std::string url)
 {
     DWORD dwStyle = WS_CHILD | WS_VISIBLE;
-    
-    return CWnd::Create(
+    std::string *pUrl = new std::string(std::move(url));
+
+    return CWnd::CreateEx(
+        0,
         BROWSER_CTRL_CLASSNAME,
         L"",
         dwStyle,
         CRect(0, 0, 0, 0),
         pParent,
-        NULL);
+        NULL,
+        (LPVOID)pUrl);
 }
 
 
@@ -93,8 +108,10 @@ int CBrowserCtrl::OnCreate(LPCREATESTRUCT pCreateStruct)
         return -1;
     }
 
+    std::string url = GetFromLPVoid<std::string>(pCreateStruct->lpCreateParams);
+
     HWND hWnd = GetSafeHwnd();
-    m_pBrowser = cefContext.CreateBrowser(hWnd, "https://www.google.com");
+    m_pBrowser = cefContext.CreateBrowser(hWnd, url);
 
     return 0;
 }
