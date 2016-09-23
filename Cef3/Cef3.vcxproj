@@ -153,6 +153,8 @@
     <Text Include="..\LICENSE.txt" />
     <Text Include="..\README.md" />
     <Text Include="html\index.html" />
+    <Text Include="html\_css\style.css" />
+    <Text Include="html\_script\index.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\CEF3\libcef_dll\libcef_dll_wrapper.vcxproj">

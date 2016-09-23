@@ -28,12 +28,24 @@
     <Filter Include="HTML">
       <UniqueIdentifier>{5be5165c-2771-4235-a5a8-5886b08fb830}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HTML\_css">
+      <UniqueIdentifier>{ad9a07e9-c788-4940-a3b0-ed4b6b8879fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HTML\_script">
+      <UniqueIdentifier>{c99572c5-deec-4d71-a71b-77610b2ea517}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\README.md" />
     <Text Include="..\LICENSE.txt" />
     <Text Include="html\index.html">
       <Filter>HTML</Filter>
+    </Text>
+    <Text Include="html\_css\style.css">
+      <Filter>HTML\_css</Filter>
+    </Text>
+    <Text Include="html\_script\index.js">
+      <Filter>HTML\_script</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
