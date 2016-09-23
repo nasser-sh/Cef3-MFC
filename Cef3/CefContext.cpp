@@ -13,7 +13,7 @@ namespace
 {
     CefString const browserProcessString = "";
     CefString const renderProcessString = "renderer";
-	CefString const htmlPath = "/html/"; // temporary
+    CefString const htmlPath = "/html/"; // temporary
 
     CefRefPtr<CefCommandLine> GetCefCommandLine()
     {
@@ -49,7 +49,7 @@ CefContext::CefContext()
 { 
     assert(!isInstantiated);
     isInstantiated = true;
-	GetCurrentDirectory(100, currentDirectory);
+    GetCurrentDirectory(100, currentDirectory);
 
     bool isChromiumInitialized = Initialize();
     assert(isChromiumInitialized);

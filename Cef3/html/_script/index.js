@@ -1,10 +1,10 @@
 
 (function () {
-	"use strict";
+    "use strict";
 
-	function main() {
-		window.alert("Hello, World!");
-	}
+    function main() {
+        window.alert("Hello, World!");
+    }
 
-	window.addEventListener("load", main, false);
+    window.addEventListener("load", main, false);
 }());
