@@ -152,6 +152,7 @@
   <ItemGroup>
     <Text Include="..\LICENSE.txt" />
     <Text Include="..\README.md" />
+    <Text Include="html\index.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\CEF3\libcef_dll\libcef_dll_wrapper.vcxproj">

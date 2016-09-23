@@ -13,7 +13,7 @@ namespace
 {
     CefString const browserProcessString = "";
     CefString const renderProcessString = "renderer";
-
+	CefString const htmlPath = "/html/"; // temporary
 
     CefRefPtr<CefCommandLine> GetCefCommandLine()
     {
@@ -42,12 +42,14 @@ namespace
 
 
 bool CefContext::isInstantiated = false;
+wchar_t CefContext::currentDirectory[100];
 
 
 CefContext::CefContext()
 { 
     assert(!isInstantiated);
     isInstantiated = true;
+	GetCurrentDirectory(100, currentDirectory);
 
     bool isChromiumInitialized = Initialize();
     assert(isChromiumInitialized);
@@ -75,7 +77,7 @@ CefRefPtr<CefBrowser> CefContext::CreateBrowser(
     return CefBrowserHost::CreateBrowserSync(
         windowInfo, 
         new CClientHandler, 
-        url, 
+        CefString(currentDirectory).ToString() + htmlPath.ToString() + url, 
         browserSettings, 
         nullptr);
 }

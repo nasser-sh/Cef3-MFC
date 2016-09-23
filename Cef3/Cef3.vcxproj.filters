@@ -25,10 +25,16 @@
     <Filter Include="Source Files\CEF3">
       <UniqueIdentifier>{52cfbdcc-dcc7-49ab-bea3-a4e15845b42d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HTML">
+      <UniqueIdentifier>{5be5165c-2771-4235-a5a8-5886b08fb830}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\README.md" />
     <Text Include="..\LICENSE.txt" />
+    <Text Include="html\index.html">
+      <Filter>HTML</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
