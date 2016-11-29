@@ -11,9 +11,9 @@
 
 namespace
 {
-    CefString const browserProcessString = "";
-    CefString const renderProcessString = "renderer";
-    CefString const htmlPath = "/html/"; // temporary
+    char const browserProcessString[] = "";
+    char const renderProcessString[] = "renderer";
+    char const htmlPath[] = "/html/"; // temporary
 
     CefRefPtr<CefCommandLine> GetCefCommandLine()
     {
@@ -77,7 +77,7 @@ CefRefPtr<CefBrowser> CefContext::CreateBrowser(
     return CefBrowserHost::CreateBrowserSync(
         windowInfo, 
         new CClientHandler, 
-        CefString(currentDirectory).ToString() + htmlPath.ToString() + url, 
+        CefString(currentDirectory).ToString() + htmlPath + url, 
         browserSettings, 
         nullptr);
 }
