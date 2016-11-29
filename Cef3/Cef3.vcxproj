@@ -112,6 +112,7 @@
     <ClInclude Include="CefBrowserApp.h" />
     <ClInclude Include="CefClientWindowsMessages.h" />
     <ClInclude Include="CefContext.h" />
+    <ClInclude Include="CefIPMessageIDs.h" />
     <ClInclude Include="CefOtherApp.h" />
     <ClInclude Include="CefRendererApp.h" />
     <ClInclude Include="ChildFrm.h" />

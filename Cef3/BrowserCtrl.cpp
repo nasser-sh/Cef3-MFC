@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BrowserCtrl.h"
 #include "CefClientWindowsMessages.h"
+#include "CefIPMessageIDs.h"
 
 
 #define BROWSER_CTRL_CLASSNAME L"MFCBrowserCtrl"
@@ -142,6 +143,21 @@ void CBrowserCtrl::OnSize(UINT nType, int cx, int cy)
         SWP_NOZORDER);
     EndDeferWindowPos(hDwp);
 }
+
+
+void CBrowserCtrl::ExecuteJS(
+    const std::string &function, 
+    const std::string &arguments)
+{
+    CefString jsCall = function + "(" + arguments + ")";
+    CefRefPtr<CefFrame> pFrame = m_pBrowser->GetMainFrame();
+    pFrame->ExecuteJavaScript(jsCall, pFrame->GetURL(), 0);
+    // CefRefPtr<CefProcessMessage> pMessage = CefProcessMessage::Create(IP_MESSAGE_EXECUTE_JS);
+    // CefRefPtr<CefListValue> jsArguments = pMessage->GetArgumentList();
+    // jsArguments->SetString(0, jsCall);
+    // m_pBrowser->SendProcessMessage(PID_RENDERER, pMessage);
+}
+
 
 LRESULT CBrowserCtrl::OnBrowserCreated(WPARAM wParam, LPARAM lParam)
 {

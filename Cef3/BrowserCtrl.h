@@ -3,6 +3,7 @@
 #include <string>
 #include "CefContext.h"
 
+
 class CBrowserCtrl : public CWnd
 {
     DECLARE_DYNCREATE(CBrowserCtrl)
@@ -13,7 +14,9 @@ public:
     static void DoMessageLoopWork();
 
     BOOL Create(CWnd *pParent, std::string url);
-
+    void ExecuteJS(
+        const std::string &function, 
+        const std::string &arguments);
 private:
     static CefContext cefContext;
 

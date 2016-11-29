@@ -42,14 +42,14 @@ namespace
 
 
 bool CefContext::isInstantiated = false;
-wchar_t CefContext::currentDirectory[100];
+wchar_t CefContext::currentDirectory[MAX_PATH];
 
 
 CefContext::CefContext()
 { 
     assert(!isInstantiated);
     isInstantiated = true;
-    GetCurrentDirectory(100, currentDirectory);
+    GetCurrentDirectory(MAX_PATH, currentDirectory);
 
     bool isChromiumInitialized = Initialize();
     assert(isChromiumInitialized);
@@ -96,12 +96,13 @@ bool CefContext::Initialize()
     CefRefPtr<CefCommandLine> commandLine = GetCefCommandLine();
     m_pApp = GetApp(commandLine);
 
-    CefMainArgs mainArgs;
+    CefMainArgs mainArgs(::GetModuleHandle(nullptr));
     int exitCode = CefExecuteProcess(mainArgs, m_pApp, nullptr);
     ASSERT(exitCode < 0);
 
     CefSettings settings;
     settings.no_sandbox = true;
+    settings.multi_threaded_message_loop = false;
     //settings.single_process = true;
     
     return CefInitialize(mainArgs, settings, m_pApp, nullptr);

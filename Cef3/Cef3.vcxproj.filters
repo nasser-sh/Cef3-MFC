@@ -94,6 +94,9 @@
     <ClInclude Include="CefClientWindowsMessages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CefIPMessageIDs.h">
+      <Filter>Header Files\CEF3</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -28,6 +28,8 @@ BEGIN_MESSAGE_MAP(CCef3View, CView)
     ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
     ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
     ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
+    // CUSTOM MESSAGE
+    ON_BN_CLICKED(ID_EXECUTE_JS, &CCef3View::OnAddJS)
 END_MESSAGE_MAP()
 
 // CCef3View construction/destruction
@@ -122,6 +124,13 @@ void CCef3View::Dump(CDumpContext& dc) const
 {
     CView::Dump(dc);
 }
+
+
+void CCef3View::OnAddJS()
+{
+    m_browserCtrl.ExecuteJS("addHtml", "{ \"text\" : \"<p>Added From Cpp</p>\" }");
+}
+
 
 CCef3Doc* CCef3View::GetDocument() const // non-debug version is inline
 {

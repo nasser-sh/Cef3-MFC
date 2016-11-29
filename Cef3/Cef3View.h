@@ -39,6 +39,7 @@ protected:
     CBrowserCtrl m_browserCtrl;
 // Generated message map functions
 protected:
+    afx_msg void OnAddJS();
     afx_msg int OnCreate(LPCREATESTRUCT pCreateStruct);
     afx_msg void OnSize(UINT nType, int cx, int cy);
     DECLARE_MESSAGE_MAP()

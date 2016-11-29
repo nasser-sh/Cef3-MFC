@@ -12,6 +12,11 @@ public:
 	virtual ~CCefRendererApp();
 
 	CefRefPtr<CefRenderProcessHandler> GetRenderProcessHandler() override { return this; }
+    
+    bool OnProcessMessageReceived(
+        CefRefPtr<CefBrowser> browser,
+        CefProcessId source_process,
+        CefRefPtr<CefProcessMessage> message) override;
 
 private:
 	IMPLEMENT_REFCOUNTING(CCefRendererApp);

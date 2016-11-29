@@ -20,7 +20,7 @@ private:
 
 private:
     static bool isInstantiated;
-	static wchar_t currentDirectory[100];
+	static wchar_t currentDirectory[MAX_PATH];
 
     CefRefPtr<CefApp> m_pApp;
 };
