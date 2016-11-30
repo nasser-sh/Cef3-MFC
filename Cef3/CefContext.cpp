@@ -11,9 +11,9 @@
 
 namespace
 {
-    char const browserProcessString[] = "";
-    char const renderProcessString[] = "renderer";
-    char const htmlPath[] = "/html/"; // temporary
+    CefString const browserProcessString = "";
+    CefString const renderProcessString = "renderer";
+    CefString const htmlPath = "/html/"; // temporary
 
     CefRefPtr<CefCommandLine> GetCefCommandLine()
     {
@@ -46,13 +46,11 @@ wchar_t CefContext::currentDirectory[MAX_PATH];
 
 
 CefContext::CefContext()
+: m_isInit(false)
 { 
     assert(!isInstantiated);
     isInstantiated = true;
     GetCurrentDirectory(MAX_PATH, currentDirectory);
-
-    bool isChromiumInitialized = Initialize();
-    assert(isChromiumInitialized);
 }
 
 
@@ -77,7 +75,7 @@ CefRefPtr<CefBrowser> CefContext::CreateBrowser(
     return CefBrowserHost::CreateBrowserSync(
         windowInfo, 
         new CClientHandler, 
-        CefString(currentDirectory).ToString() + htmlPath + url, 
+        CefString(currentDirectory).ToString() + htmlPath.ToString() + url, 
         browserSettings, 
         nullptr);
 }
@@ -90,9 +88,18 @@ void CefContext::DoMessageLoopWork()
     }
 }
 
-
-bool CefContext::Initialize()
+bool CefContext::IsInit() const
 {
+    return m_isInit;
+}
+
+
+void CefContext::Init()
+{
+    if (m_isInit) {
+        return;
+    }
+
     CefRefPtr<CefCommandLine> commandLine = GetCefCommandLine();
     m_pApp = GetApp(commandLine);
 
@@ -105,14 +112,17 @@ bool CefContext::Initialize()
     settings.multi_threaded_message_loop = false;
     //settings.single_process = true;
     
-    return CefInitialize(mainArgs, settings, m_pApp, nullptr);
+    m_isInit = CefInitialize(mainArgs, settings, m_pApp, nullptr);
 }
 
 
 void CefContext::Shutdown()
 {
-    CefDoMessageLoopWork();
-    CefDoMessageLoopWork();
-    CefDoMessageLoopWork();
-    CefShutdown();
+    if (m_isInit) {
+        CefDoMessageLoopWork();
+        CefDoMessageLoopWork();
+        CefDoMessageLoopWork();
+        CefShutdown();
+        m_isInit = false;
+    }
 }

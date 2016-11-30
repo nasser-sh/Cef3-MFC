@@ -157,6 +157,20 @@ void CBrowserCtrl::ExecuteJS(
 }
 
 
+bool CBrowserCtrl::Init()
+{
+    cefContext.Init();
+    return cefContext.IsInit();
+}
+
+
+void CBrowserCtrl::Shutdown()
+{
+    cefContext.Shutdown();
+}
+
+
+
 LRESULT CBrowserCtrl::OnBrowserCreated(WPARAM wParam, LPARAM lParam)
 {
     // Do nothing

@@ -65,7 +65,11 @@ BOOL CCef3App::PumpMessage()
 }
 
 BOOL CCef3App::InitInstance()
-{
+{   
+    if (!CBrowserCtrl::Init()) {
+        return FALSE;
+    }
+
     // InitCommonControlsEx() is required on Windows XP if an application
     // manifest specifies use of ComCtl32.dll version 6 or later to enable
     // visual styles.  Otherwise, any window creation will fail.
@@ -154,6 +158,7 @@ int CCef3App::ExitInstance()
     //TODO: handle additional resources you may have added
     AfxOleTerm(FALSE);
 
+    CBrowserCtrl::Shutdown();
     return CWinApp::ExitInstance();
 }
 

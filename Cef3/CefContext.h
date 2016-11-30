@@ -12,10 +12,10 @@ public:
     CefRefPtr<CefBrowser> CreateBrowser(
         CefWindowHandle parentWindow,
         const std::string &url) const;
-    void DoMessageLoopWork();
 
-private:
-    bool Initialize();
+    void DoMessageLoopWork();
+    bool IsInit() const;
+    void Init();
     void Shutdown();
 
 private:
@@ -23,4 +23,5 @@ private:
 	static wchar_t currentDirectory[MAX_PATH];
 
     CefRefPtr<CefApp> m_pApp;
+    bool m_isInit;
 };

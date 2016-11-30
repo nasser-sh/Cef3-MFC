@@ -12,6 +12,8 @@ public:
     virtual ~CBrowserCtrl();
 
     static void DoMessageLoopWork();
+    static bool Init();
+    static void Shutdown();
 
     BOOL Create(CWnd *pParent, std::string url);
     void ExecuteJS(
