@@ -93,6 +93,11 @@ void CCef3View::OnSize(UINT nType, int cx, int cy)
 }
 
 
+void CCef3View::OnAddJS()
+{
+    m_browserCtrl.ExecuteJS("addHtml", "{ \"text\" : \"<p>Added From Cpp</p>\" }");
+}
+
 // CCef3View printing
 
 BOOL CCef3View::OnPreparePrinting(CPrintInfo* pInfo)
@@ -123,12 +128,6 @@ void CCef3View::AssertValid() const
 void CCef3View::Dump(CDumpContext& dc) const
 {
     CView::Dump(dc);
-}
-
-
-void CCef3View::OnAddJS()
-{
-    m_browserCtrl.ExecuteJS("addHtml", "{ \"text\" : \"<p>Added From Cpp</p>\" }");
 }
 
 
