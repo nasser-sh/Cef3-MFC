@@ -1,13 +1,10 @@
 #include "stdafx.h"
-#include "CefRendererApp.h"
 #include "CefIPMessageIDs.h"
+#include "RenderProcessHandler.h"
 
 
-CCefRendererApp::~CCefRendererApp()
-{ }
 
-
-bool CCefRendererApp::OnProcessMessageReceived(
+bool CRenderProcessHandler::OnProcessMessageReceived(
     CefRefPtr<CefBrowser> pBrowser, 
     CefProcessId sourceProcess, 
     CefRefPtr<CefProcessMessage> pMessage)

@@ -73,15 +73,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files\MFC</Filter>
     </ClInclude>
-    <ClInclude Include="CefBrowserApp.h">
-      <Filter>Header Files\CEF3</Filter>
-    </ClInclude>
-    <ClInclude Include="CefOtherApp.h">
-      <Filter>Header Files\CEF3</Filter>
-    </ClInclude>
-    <ClInclude Include="CefRendererApp.h">
-      <Filter>Header Files\CEF3</Filter>
-    </ClInclude>
     <ClInclude Include="CefContext.h">
       <Filter>Header Files\CEF3</Filter>
     </ClInclude>
@@ -95,6 +86,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CefIPMessageIDs.h">
+      <Filter>Header Files\CEF3</Filter>
+    </ClInclude>
+    <ClInclude Include="CefClientApp.h">
+      <Filter>Header Files\CEF3</Filter>
+    </ClInclude>
+    <ClInclude Include="BrowserProcessHandler.h">
+      <Filter>Header Files\CEF3</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderProcessHandler.h">
       <Filter>Header Files\CEF3</Filter>
     </ClInclude>
   </ItemGroup>
@@ -117,12 +117,6 @@
     <ClCompile Include="MainFrm.cpp">
       <Filter>Source Files\MFC</Filter>
     </ClCompile>
-    <ClCompile Include="CefBrowserApp.cpp">
-      <Filter>Source Files\CEF3</Filter>
-    </ClCompile>
-    <ClCompile Include="CefRendererApp.cpp">
-      <Filter>Source Files\CEF3</Filter>
-    </ClCompile>
     <ClCompile Include="CefContext.cpp">
       <Filter>Source Files\CEF3</Filter>
     </ClCompile>
@@ -131,6 +125,15 @@
     </ClCompile>
     <ClCompile Include="ClientHandler.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CefClientApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BrowserProcessHandler.cpp">
+      <Filter>Source Files\CEF3</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderProcessHandler.cpp">
+      <Filter>Source Files\CEF3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

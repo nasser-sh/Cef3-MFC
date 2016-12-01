@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "ClientHandler.h"
+#include "BrowserProcessHandler.h"
 #include "CefContext.h"
-#include "CefBrowserApp.h"
-#include "CefOtherApp.h"
-#include "CefRendererApp.h"
+#include "CefClientApp.h"
+#include "ClientHandler.h"
+#include "RenderProcessHandler.h"
 #include "include/cef_app.h"
 #include "include/cef_base.h"
 #include "include/cef_command_line.h"
@@ -11,9 +11,7 @@
 
 namespace
 {
-    CefString const browserProcessString = "";
-    CefString const renderProcessString = "renderer";
-    CefString const htmlPath = "/html/"; // temporary
+    CefString const htmlPath = "/html/";
 
     CefRefPtr<CefCommandLine> GetCefCommandLine()
     {
@@ -21,22 +19,6 @@ namespace
         LPWSTR cmd = ::GetCommandLine();
         commandLine->InitFromString(cmd);
         return commandLine;
-    }
-
-
-    CefRefPtr<CefApp> GetApp(CefRefPtr<CefCommandLine> const &commandLine)
-    {
-        if (!commandLine->HasSwitch("type")) {
-            return new CCefBrowserApp;
-        }
-
-        CefString processType = commandLine->GetSwitchValue("type");
-
-        if (processType == renderProcessString) {
-            return new CCefRendererApp;
-        }
-
-        return new CCefOtherApp;
     }
 }
 
@@ -100,8 +82,9 @@ void CefContext::Init()
         return;
     }
 
-    CefRefPtr<CefCommandLine> commandLine = GetCefCommandLine();
-    m_pApp = GetApp(commandLine);
+    m_pApp = new CCefClientApp(
+        new CBrowserProcessHandler,
+        new CRenderProcessHandler);
 
     CefMainArgs mainArgs(::GetModuleHandle(nullptr));
     int exitCode = CefExecuteProcess(mainArgs, m_pApp, nullptr);
@@ -110,7 +93,10 @@ void CefContext::Init()
     CefSettings settings;
     settings.no_sandbox = true;
     settings.multi_threaded_message_loop = false;
-    //settings.single_process = true;
+
+#ifdef DEBUG
+    settings.single_process = true;
+#endif
     
     m_isInit = CefInitialize(mainArgs, settings, m_pApp, nullptr);
 }
